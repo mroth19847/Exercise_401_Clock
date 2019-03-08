@@ -1,5 +1,6 @@
-package BL;
+package GUI;
 
+import BL.Clock;
 import BL.Time;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -38,6 +39,16 @@ public class ClockGUI extends javax.swing.JFrame {
         paTime.add(title3);
         paTime.add(la);
         new Thread(la).start();
+        
+        //Clock
+        JPanel paClock = new Clock(ZoneId.of("Europe/Vienna"));
+        paClock.setBackground(new java.awt.Color(0, 0, 0));
+        paClock.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        paClock.setMaximumSize(new java.awt.Dimension(200, 200));
+        paClock.setMinimumSize(new java.awt.Dimension(200, 200));
+        paClock.setPreferredSize(new java.awt.Dimension(200, 200));
+        getContentPane().add(paClock, java.awt.BorderLayout.LINE_END);
+        new Thread((Runnable) paClock).start();
     }
 
     @SuppressWarnings("unchecked")
